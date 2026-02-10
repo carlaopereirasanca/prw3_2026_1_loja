@@ -1,8 +1,9 @@
-package br.edu.ifsp.carlao2005;
+package br.edu.ifsp.carlao2005.modelo;
 
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "produtos")
@@ -14,6 +15,24 @@ public class Produto {
     private String nome;
     private String descricao;
     private BigDecimal preco;
+    // Atributo que representa a data de cadastro:
+    private LocalDate dataCadastro = LocalDate.now();
+
+    // Categoria não é mais um @Enumerated, retiramos a anotação.
+    // Porém precisamos indicar a cardinalidade do relacionamento:
+    @ManyToOne
+    private Categoria categoria;
+
+    // Construtor default:
+    public Produto() {}
+
+    // Construtor (não precisa id nem dataCadastro):
+    public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.categoria = categoria;
+    }
 
     public Long getId() { return id; }
 
