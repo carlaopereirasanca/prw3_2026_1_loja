@@ -49,4 +49,12 @@ public class Produto {
     public BigDecimal getPreco() { return preco; }
 
     public void setPreco(BigDecimal preco) { this.preco = preco; }
+
+    public LocalDate getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(LocalDate dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
 }
